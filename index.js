@@ -19,6 +19,7 @@ app.post('/sent-to-linenoti',(req,res,next) => {
 
     data = {"status":200,"message":payload.message}
     
+    console.log("data : "+data);
 const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
