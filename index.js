@@ -16,8 +16,8 @@ app.all('/', (req, res) => {
 app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
     console.log("payload : "+payload);
-
-    data = {"status":200,"message":payload.message}
+    console.log("message : "+JSON.stringify(payload.message));
+    data = {"status":200,"message":JSON.stringify(payload.message)}
     
     console.log("data : "+data);
 const config = {
