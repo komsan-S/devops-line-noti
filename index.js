@@ -26,7 +26,7 @@ const config = {
     }
   };
 
-    const response = axios.post('https://notify-api.line.me/api/notify', payload)
+    const response = axios.post('https://notify-api.line.me/api/notify', data,config)
   .then(response => {
     // console.log(response.data);
     return response.data
