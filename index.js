@@ -13,7 +13,7 @@ app.all('/', (req, res) => {
     res.send('Yo!')
 })
 
-app.post('/sent-to-linenoti',(req,res,next) => {
+app.post('/sent-to-linenoti',async(req,res,next) => {
     const payload = req.body
     // console.log("payload : "+payload);
     // console.log("message : "+JSON.stringify(payload.message));
@@ -29,7 +29,7 @@ const config = {
     }
   };
 
-    const response = axios.post('https://notify-api.line.me/api/notify', data ,config)
+    const response = await axios.post('https://notify-api.line.me/api/notify', data ,config)
   .then(response => {
     // console.log(response.data);
     return response.data
