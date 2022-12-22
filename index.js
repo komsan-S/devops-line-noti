@@ -17,6 +17,7 @@ app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
     console.log("payload : "+payload);
 
+    data = {"status":200,"message":payload.message,"target":"foobar"}
     
 const config = {
     headers: {
