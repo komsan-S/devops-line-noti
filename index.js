@@ -8,13 +8,9 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
-})
-
 app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
+    console.log("payload", payload)
 
 const response = request({
     method: 'POST',
@@ -26,7 +22,7 @@ const response = request({
       'bearer': 'd8cFwcoMGf8Ym5GRQIwjLHojEVh9Powd91gkEGk0CvF'
     },
     form: {
-      message: JSON.stringify(payload.message)
+      message: JSON.stringify(payload.detailedMessage.text)
     }
   }, (err, httpResponse, body) => {
     if(err){
