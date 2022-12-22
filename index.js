@@ -21,7 +21,7 @@ const response = request({
         'Content-Type': 'application/x-www-form-urlencoded'
     },
     auth: {
-        'bearer': 'd8cFwcoMGf8Ym5GRQIwjLHojEVh9Powd91gkEGk0CvF'
+        'bearer': 'vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
     },
     form: {
         message: "โง่โง่ๆ"
