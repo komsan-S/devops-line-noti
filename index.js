@@ -17,12 +17,14 @@ app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
     console.log("payload : "+payload);
 
-    data = {"status":200,"message":payload.message,"target":"foobar"}
+    data = {"status":200,"message":payload.message}
     
 const config = {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Bearer d8cFwcoMGf8Ym5GRQIwjLHojEVh9Powd91gkEGk0CvF'
+      'Content-Type': 'multipart/form-data',
+    },
+    auth : {
+        bearer :'d8cFwcoMGf8Ym5GRQIwjLHojEVh9Powd91gkEGk0CvF'
     }
   };
 
