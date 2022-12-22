@@ -10,9 +10,9 @@ app.use(bodyParser.json())
 
 app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
-    console.log("payload", payload)
+    // console.log("payload", payload)
     console.log(JSON.stringify(payload.detailedMessage.text))
-    console.log(JSON.stringify(payload.detailedMessage["text"]))
+    // console.log(JSON.stringify(payload.detailedMessage["text"]))
 const response = request({
     method: 'POST',
     uri: 'https://notify-api.line.me/api/notify',
@@ -29,6 +29,10 @@ const response = request({
     if(err){
       console.log(err);
     } else {
+        console.log({
+            httpResponse: httpResponse,
+            body: body
+          });
       res.json({
         httpResponse: httpResponse,
         body: body
