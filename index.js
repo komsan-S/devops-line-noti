@@ -12,8 +12,8 @@ app.post('/sent-to-linenoti',async(req,res,next) => {
     const payload = req.body
     console.log("payload", payload)
     // console.log(JSON.stringify(payload.detailedMessage.text))
-    // message = JSON.stringify(payload.detailedMessage.text)
-    // console.log(JSON.stringify(payload.detailedMessage["text"]))
+    message = JSON.stringify(payload.notificationId)+" : "+JSON.stringify(payload.detailedMessage.text)
+    console.log("message: "+message)
 const response = await request({
     method: 'POST',
     uri: 'https://notify-api.line.me/api/notify',
