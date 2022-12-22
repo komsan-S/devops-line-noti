@@ -1,9 +1,11 @@
 const express = require('express')
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const app = express()
-var jsonParser = bodyParser.json()
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
