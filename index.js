@@ -9,7 +9,7 @@ app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
     console.log(payload);
 
-    res.send(200);
+    res.send(payload);
 })
 app.listen(process.env.PORT || 3000,() => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`)
