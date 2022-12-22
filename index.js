@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-var request = require('request');
+const axios = require('axios');
 const app = express()
 
 
@@ -8,42 +8,38 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.post('/sent-to-linenoti',async(req,res,next) => {
-    const payload = req.body
-    console.log("payload", payload)
-    // console.log(JSON.stringify(payload.detailedMessage.text))
-    message = JSON.stringify(payload.notificationId)+" : "+JSON.stringify(payload.detailedMessage.text)
-    console.log("message: "+message)
-const response = await request({
-    method: 'POST',
-    uri: 'https://notify-api.line.me/api/notify',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    auth: {
-        'bearer': 'vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
-    },
-    form: {
-        message: message
-    }
-}, (err, httpResponse, body) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log({
-            httpResponse: httpResponse,
-            body: body
-        });
-        res.json({
-            httpResponse: httpResponse,
-            body: body
-        });
-    }
-});
-    res.send(response);
+app.all('/', (req, res) => {
+    console.log("Just got a request!")
+    res.send('Yo!')
 })
 
+app.post('/sent-to-linenoti',(req,res,next) => {
+    const payload = req.body
+    // console.log("payload : "+payload);
+    // console.log("message : "+JSON.stringify(payload.message));
+    data = { message: JSON.stringify(payload.detailedMessage.text)}
+    console.log("data : " , data);
+    // const bodyFormData = new FormData();
+    // bodyFormData.append('message',JSON.stringify(payload.detailedMessage.text));
 
+const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
+    }
+  };
+
+    const response = axios.post('https://notify-api.line.me/api/notify', data ,config)
+  .then(response => {
+    // console.log(response.data);
+    return response.data
+  })
+  .catch(error => {
+    // console.log(error);
+    return error
+  });
+    res.send(response);
+})
 app.listen(process.env.PORT || 3000,() => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`)
 })
