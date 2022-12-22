@@ -17,15 +17,15 @@ app.post('/sent-to-linenoti',(req,res,next) => {
     const payload = req.body
     // console.log("payload : "+payload);
     // console.log("message : "+JSON.stringify(payload.message));
-    data = { message: JSON.stringify(payload.detailedMessage.text)}
+    data = { message: payload.detailedMessage.text}
     console.log("data : " , data);
     // const bodyFormData = new FormData();
     // bodyFormData.append('message',JSON.stringify(payload.detailedMessage.text));
 
 const config = {
     headers: {
-      'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
     }
   };
 
