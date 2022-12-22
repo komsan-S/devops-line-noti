@@ -24,7 +24,7 @@ const response = request({
         'bearer': 'vSiJ7IqqiQH1E7C7AGVWtZJA05YRvV6gHSFp4KdR12N'
     },
     form: {
-        message: "โง่โง่ๆ"
+        message: message
     }
 }, (err, httpResponse, body) => {
     if (err) {
@@ -42,6 +42,8 @@ const response = request({
 });
     res.send(response);
 })
+
+
 app.listen(process.env.PORT || 3000,() => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`)
 })
