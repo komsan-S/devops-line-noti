@@ -8,13 +8,13 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.post('/sent-to-linenoti',(req,res,next) => {
+app.post('/sent-to-linenoti',async(req,res,next) => {
     const payload = req.body
-    // console.log("payload", payload)
-    console.log(JSON.stringify(payload.detailedMessage.text))
-    message = JSON.stringify(payload.detailedMessage.text)
+    console.log("payload", payload)
+    // console.log(JSON.stringify(payload.detailedMessage.text))
+    // message = JSON.stringify(payload.detailedMessage.text)
     // console.log(JSON.stringify(payload.detailedMessage["text"]))
-const response = request({
+const response = await request({
     method: 'POST',
     uri: 'https://notify-api.line.me/api/notify',
     headers: {
