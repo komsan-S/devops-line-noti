@@ -17,7 +17,7 @@ app.post('/sent-to-linenoti',async(req,res,next) => {
     const payload = req.body
     // console.log("payload : "+payload);
     // console.log("message : "+JSON.stringify(payload.message));
-    data = { message: payload.notificationId +" : "+payload.detailedMessage.text}
+    data = { message: payload.detailedMessage.text}
     console.log("data : " , data);
     // const bodyFormData = new FormData();
     // bodyFormData.append('message',JSON.stringify(payload.detailedMessage.text));
